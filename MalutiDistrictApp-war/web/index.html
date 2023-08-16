@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="MalutiDistrictSevlet" method="post">
+                       <div >
+                <label>Enter Question Description </label>
+                <input type="text" name="question"/>
+            </div>
+
+            <div >
+                <label>Select Sign Group </label>
+                <select name="signGroup">
+                    <option value="control signs">control signs</option>
+                    <option value="command signs">command signs</option>
+                    <option value="prohibition signs">prohibition signs</option>
+                    <option value="reservation signs">reservation signs</option>
+                </select>
+            </div>
+            <div >
+                <label>Enter Question Description </label>
+                <div>
+                    <input type="text" name="possibleAnswer1"/> 
+                </div>
+                <div>
+                    <input type="text" name="possibleAnswer2"/> 
+                </div>
+                <div>
+                    <input type="text" name="possibleAnswer3"/> 
+                </div>
+                <div>
+                    <input type="text" name="possibleAnswer4"/> 
+                </div>
+            </div>
+            <div >
+                <label>Enter correct answer letter : </label>
+                <input type="text" name="correctAnswer"/>
+            </div>
+            <div>
+                <input type="submit" name="choose" value="insert" />
+                <input type="submit" name="choose" value="view" />
+            </div>
+            
+        </form>
+
+
+    </body>
+</html>
