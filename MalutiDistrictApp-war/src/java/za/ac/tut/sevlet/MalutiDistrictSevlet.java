@@ -1,7 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+//Group 30
+//216755634
+//218426263
+
 package za.ac.tut.sevlet;
 
 
@@ -54,13 +54,13 @@ public class MalutiDistrictSevlet extends HttpServlet {
         Question question = new Question();
         question.setQuestionID(0);
         
-        PossibleAnswer possibleAnswer = new PossibleAnswer(0, question.getQuestionID(), possibleAnswer1, possibleAnswer2, possibleAnswer3, possibleAnswer4);
-        Answer answer = new Answer(0, question.getQuestionID(), correctAnswer);
+        //PossibleAnswer possibleAnswer = new PossibleAnswer(0, question.getQuestionID(), possibleAnswer1);
+        //Answer answer = new Answer(0, question.getQuestionID(), correctAnswer);
         /*try (PrintWriter out = response.getWriter()) {
             out.print(question.getQuestionID()+"<br>");
             out.println(theQuestion+" "+ signGroup+" "+ correctAnswer+" "+ possibleAnswer2+" "+ possibleAnswer1+" "+ possibleAnswer3+" "+ possibleAnswer4);
         }*/
-        question.setQuestion(theQuestion, signGroup, 1, false, possibleAnswer, answer);
+        //question.setQuestion(theQuestion, signGroup, 1, false, possibleAnswer, answer);
 //Question question = new PossibleAnswer(0, 0, possibleAnswer1, possibleAnswer2, possibleAnswer3, possibleAnswer4);
 
         if (decision.equals("insert")) {

@@ -1,7 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+//Group 30
+//216755634
+//218426263
+
 package za.ac.tut.question;
 
 import java.io.Serializable;
@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,25 +23,28 @@ public class Answer implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int answerID;
-    private int fkQuestionI;
+    private  Question question;
     private String correctAnswer;
 
     public Answer() {
     }
 
-    public Answer(int answerID, int fkQuestionI, String correctAnswer) {
-        this.answerID = answerID;
-        this.fkQuestionI = fkQuestionI;
+    public Answer(Question question, String correctAnswer) {
+        this.question = question;
         this.correctAnswer = correctAnswer;
     }
+
+   
 
     public void setAnswerID(int answerID) {
         this.answerID = answerID;
     }
 
-    public void setFkQuestionI(int fkQuestionI) {
-        this.fkQuestionI = fkQuestionI;
+    public void setQuestion(Question question) {
+        this.question = question;
     }
+
+    
 
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
@@ -49,10 +54,12 @@ public class Answer implements Serializable{
         return answerID;
     }
 
-    public int getFkQuestionI() {
-        return fkQuestionI;
+    @OneToOne
+    @JoinColumn(name="fkQuestionId")
+    public Question getQuestion() {
+        return question;
     }
-
+    
     public String getCorrectAnswer() {
         return correctAnswer;
     }

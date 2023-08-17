@@ -1,12 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+//Group 30
+//216755634
+//218426263
+
 package za.ac.tut.question;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,8 +22,9 @@ import javax.persistence.Table;
  * @author LEBUTE
  */
 @Entity
-@Table(name="tblQuestion")
-public class Question implements Serializable{
+@Table(name = "tblQuestion")
+public class Question implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int questionID;
@@ -29,35 +32,32 @@ public class Question implements Serializable{
     private String signGroup;
     private int mark;
     private boolean isAnswered;
-    @OneToMany(targetEntity = PossibleAnswer.class)
-    @JoinColumn(name = "ps_id", referencedColumnName = "questionID")
-    private List<PossibleAnswer> possibleAnswers;
-    @OneToOne
+    //@OneToMany(mappedBy = "possibleAnswer", cascade = CascadeType.ALL, orphanRemoval = true)
+    //@JoinColumn(name = "ps_id", referencedColumnName = "questionID")
+    private List<PossibleAnswer> possibleAnswer;
     private Answer answer;
 
     public Question() {
     }
-    
-    
 
-    public Question( String question, String signGroup, int mark, boolean isAnswered, PossibleAnswer possibleAnswers, Answer answer) {
+    public Question(String question, String signGroup, int mark, boolean isAnswered, PossibleAnswer possibleAnswers, Answer answer) {
         this.question = question;
         this.signGroup = signGroup;
         this.mark = mark;
         this.isAnswered = isAnswered;
-        this.possibleAnswers = (List<PossibleAnswer>) possibleAnswers;
+        // this.possibleAnswers = (List<PossibleAnswer>) possibleAnswers;
         this.answer = answer;
     }
 
-    public void setQuestion( String question, String signGroup, int mark, boolean isAnswered, PossibleAnswer possibleAnswers, Answer answer) {
+    public void setQuestion(String question, String signGroup, int mark, boolean isAnswered, PossibleAnswer possibleAnswers, Answer answer) {
         this.question = question;
         this.signGroup = signGroup;
         this.mark = mark;
         this.isAnswered = isAnswered;
-        this.possibleAnswers = (List<PossibleAnswer>) possibleAnswers;
+        //this.possibleAnswers = (List<PossibleAnswer>) possibleAnswers;
         this.answer = answer;
     }
-    
+
     public int getQuestionID() {
         return questionID;
     }
@@ -78,10 +78,11 @@ public class Question implements Serializable{
         return isAnswered;
     }
 
-    public PossibleAnswer getPossibleAnswers() {
-        return (PossibleAnswer) possibleAnswers;
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true )
+    public List<PossibleAnswer> getPossibleAnswers() {
+        return possibleAnswer;
     }
-
+    @OneToOne(mappedBy = "answer", cascade = CascadeType.ALL)
     public Answer getAnswer() {
         return answer;
     }
@@ -106,10 +107,10 @@ public class Question implements Serializable{
         this.isAnswered = isAnswered;
     }
 
-    public void setPossibleAnswers(PossibleAnswer possibleAnswers) {
-        this.possibleAnswers = (List<PossibleAnswer>) possibleAnswers;
+    public void setPossibleAnswer(List<PossibleAnswer> possibleAnswer) {
+        this.possibleAnswer = possibleAnswer;
     }
-
+    
     public void setAnswer(Answer answer) {
         this.answer = answer;
     }
